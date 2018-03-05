@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+block variables
+// #if expr="$HTTP_COOKIE=/webfont-loaded=true/" 
+html/(lang="ru" class="webfont-loaded") 
+// #else
+html/(lang="ru")
+// #endif
+head
+	//- head
+	include _head
+
+body(class="#{body}")
+	
+	//-подсказка по обновлнию браузера
+	include ../page-contents/_sections/browserupgrade/browserupgrade
+
+	//- Кнопка на вверх 
+	include ../page-contents/_sections/up-button/up-button
+
+	//- Header
+	include ../header/header
+
+	//- Content-page
+	block content-page
+
+	//- Footer
+	include ../footer/footer
+
+	// JS and CSS
+	noscript <link href="css/style.css" rel="stylesheet">
+	script(src="js/scripts.js" async)
+	// End JS and CSS
+
+html/

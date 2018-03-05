@@ -1,0 +1,10 @@
+// Header
+header(class='site-header')
+	//- top-line
+	include _top-line/top-line
+	//- banner
+	if(body === 'is-home')
+		include _slider/slider
+	if(body != 'is-home')
+		h2.h2 #{title}
+// End header
