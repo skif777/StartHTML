@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LazyLoad</title>
+	<style>picture { display: block; }</style>
+</head>
+<body>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280.png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280.png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280.png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (2).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (2).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (2).png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (3).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (3).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (3).png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (4).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (4).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (4).png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (5).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (5).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (5).png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (6).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (6).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (6).png">
+	</picture>
+
+	<picture>
+	    <source media="(min-width: 1024px)" data-srcset="img/220x280 (7).png" />
+	    <source media="(min-width: 500px)" data-srcset="/img/220x280 (7).png" />
+	    <img class="lazy" alt="Stivaletti" data-src="img/220x280 (7).png">
+	</picture>
+
+	
+
+
+
+	<script async src="js/lazyload.min.js"></script>
+	<script>
+
+		window.lazyLoadOptions = {
+    /* your lazyload options */
+    elements_selector: ".lazy",
+    load_delay: 300 //adjust according to use case
+	};
+	</script>
+	
+	
+</body>
+</html>

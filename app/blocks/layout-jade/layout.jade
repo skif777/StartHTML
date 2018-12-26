@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+block variables
+// #if expr="$HTTP_COOKIE=/webfont-loaded=true/" 
+html/(lang="ru" class="webfont-loaded") 
+// #else
+html/(lang="ru")
+// #endif
+head
+	//- head
+	include _head
+
+body(class="#{body}")
+	
+	//-подсказка по обновлнию браузера
+	include ../page-contents/_sections-template/browserupgrade/browserupgrade
+
+	//- Кнопка на вверх 
+	include ../page-contents/_sections-template/up-button/up-button
+
+	//- Header
+	include ../header/header
+
+	//- Content-page
+	block content-page
+
+	//- Cookie
+	include ../page-contents/_sections-template/cookie/cookie
+
+	//- Footer
+	include ../footer/footer
+
+	// JS and CSS
+	noscript <link href="css/style.css" rel="stylesheet">
+	script (function(w, d){var b = d.getElementsByTagName('body')[0];var s = d.createElement("script"); var v = !("IntersectionObserver" in w) ? "8.17.0" : "10.19.0";s.async = true;s.src = "https://cdn.jsdelivr.net/npm/vanilla-lazyload@" + v + "/dist/lazyload.min.js";w.lazyLoadOptions = {/* Your options here */ threshold: 300, elements_selector: ".lazy", to_webp: true };b.appendChild(s);}(window, document));
+	script(src="js/scripts.js" async)
+	// End JS and CSS
+
+html/

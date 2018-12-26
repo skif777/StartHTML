@@ -8,7 +8,7 @@
     require 'vendor/autoload.php';
 
     // Переменные
-    $name = $_POST['name']; ;
+    $name = $_POST['name'];
     $phone = $_POST['phone']; 
 
     $mail = new PHPMailer(true);                            // Passing `true` enables exceptions

@@ -1,5 +1,5 @@
 //- Шаблон
-extends ../../layout/layout
+extends ../../layout-jade/layout
 
 //- Переменные 
 block variables
@@ -15,22 +15,7 @@ block content-page
 	// Homepage-content
 	main(class="homepage-content", role="main")
 		//- Grids
-		include ../_sections/grids/grids
-		//- Section 1
-		include ../_sections/section1/section1
-		//- Section 2
-		include ../_sections/section2/section2
-		//- Section 3
-		include ../_sections/section3/section3
-		//- Section 4
-		include ../_sections/section4/section4
-		//- Section 5
-		include ../_sections/section5/section5
-		//- Section 6
-		include ../_sections/section6/section6
-		//- Section 7
-		include ../_sections/section7/section7
-		//- Section 8
-		include ../_sections/section8/section8
+		include ../_sections-template/grids/grids
+		
 	// End homepage-content
 

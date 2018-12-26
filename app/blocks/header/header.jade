@@ -1,10 +1,13 @@
 // Header
 header(class='site-header')
-	//- top-line
-	include _top-line/top-line
-	//- banner
+	div(class="top-line")
+		.container
+			div.top-line__content
+				//- include
+				include _sections-template/_logo/logo-text
+				include _sections-template/_menu/menu
+
 	if(body === 'is-home')
-		include _slider/slider
 	if(body != 'is-home')
 		h2.h2 #{title}
 // End header

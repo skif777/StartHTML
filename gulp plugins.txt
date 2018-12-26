@@ -1,9 +1,13 @@
-npm --save-dev i gulp gulp-sass gulp-autoprefixer gulp-concat browser-sync gulp-uglifyjs gulp-cssnano gulp-rename gulp-imagemin imagemin-pngquant gulp-cache del gulp.spritesmith gulp-tinypng-nokey gulp-uncss gulp-zip gulp-update gulp-ftp gulp-htmlmin gulp-csso gulp-strip-css-comments gulp-strip-comments gulp-svgmin gulp-svg-sprites gulp-cheerio gulp-replace critical gulp-jade gulp-plumber 
+npm --save-dev i gulp gulp-sass gulp-autoprefixer gulp-concat browser-sync gulp-uglifyjs gulp-cssnano gulp-rename gulp-imagemin imagemin-pngquant gulp-cache del gulp.spritesmith gulp-tinypng-nokey gulp-uncss gulp-zip gulp-update gulp-ftp gulp-htmlmin gulp-csso gulp-strip-css-comments gulp-strip-comments gulp-svgmin gulp-svg-sprites gulp-cheerio gulp-replace critical gulp-jade gulp-plumber gulp-webp imagemin-mozjpeg gulp-responsive gulp-merge
 
 
-yarn add gulp gulp-sass gulp-autoprefixer gulp-concat browser-sync gulp-uglifyjs gulp-cssnano gulp-rename gulp-imagemin imagemin-pngquant gulp-cache del gulp.spritesmith gulp-tinypng-nokey gulp-uncss gulp-zip gulp-update gulp-ftp gulp-htmlmin gulp-csso gulp-strip-css-comments gulp-strip-comments gulp-svgmin gulp-svg-sprites gulp-cheerio gulp-replace critical gulp-jade gulp-plumber
+yarn add gulp gulp-sass gulp-autoprefixer gulp-concat browser-sync gulp-uglifyjs gulp-cssnano gulp-rename gulp-imagemin imagemin-pngquant gulp-cache del gulp.spritesmith gulp-tinypng-nokey gulp-uncss gulp-zip gulp-update gulp-ftp gulp-htmlmin gulp-csso gulp-strip-css-comments gulp-strip-comments gulp-svgmin gulp-svg-sprites gulp-cheerio gulp-replace critical gulp-jade gulp-plumber gulp-webp imagemin-mozjpeg gulp-responsive gulp-merge
 
 npm i -g gulp bower npm-check-updates
+
+Быстрое удаление node_modules: 
+npm install rimraf -g
+rimraf node_modules/
 
 Команда для sheck-updates: ncu
 

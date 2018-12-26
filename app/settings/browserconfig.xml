@@ -3,10 +3,11 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square70x70logo src="img/Favicon/tile.png"/>
-            <square150x150logo src="img/Favicon/tile.png"/>
-            <wide310x150logo src="img/Favicon/tile-wide.png"/>
-            <square310x310logo src="img/Favicon/tile.png"/>
+            <square70x70logo src="img/Favicon/tile70x70.png"/>
+            <square150x150logo src="img/Favicon/tile150x150.png"/>
+            <square310x310logo src="img/Favicon/tile310x310.png"/>
+            <wide310x150logo src="img/Favicon/tile310x150.png"/>
+            <TileColor>#2b5797</TileColor>
         </tile>
     </msapplication>
 </browserconfig>
