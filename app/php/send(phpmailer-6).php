@@ -8,8 +8,10 @@
     require 'vendor/autoload.php';
 
     // Переменные
+    $date = date("Y-m-d H:i:s");
     $name = $_POST['name'];
     $phone = $_POST['phone']; 
+    $email = $_POST['email']; 
 
     $mail = new PHPMailer(true);                            // Passing `true` enables exceptions
 
@@ -35,9 +37,37 @@
 
     // Письмо
     $mail->isHTML(true);                                        // Формат html
-    $mail->Subject = 'Тема';                                    // Тема
-    $mail->Body    = "$name <br> $phone";                       // Сообщение
-    $mail->AltBody = "$name";                                   // Альтернативное сообщние, если не сработало первое
+    $mail->Subject = 'Новая заявка';                                    // Тема
+    // Сообщение
+    $mail->Body    = "                                           
+    <html>
+        <head>
+            <title>Письмо с сайта ...</title>
+        </head>
+        <body>
+            <h2>Тема письма</h2>
+            <h4>Контактные данные:</h4>
+            <p><strong>Имя: </strong>$name</p>
+            <p><strong>E-mail: </strong>$email</p>
+            <p><strong>Телефон: </strong>$phone</p>
+            <p><i>$date</i></p>                                    
+        </body>
+    </html>";
+    // Альтернативное сообщние, если не сработало первое                    
+    $mail->AltBody = "
+     <html>
+        <head>
+            <title>Письмо с сайта ...</title>
+        </head>
+        <body>
+            <h2>Тема письма</h2>
+            <h4>Контактные данные:</h4>
+            <p><strong>Имя: </strong>$name</p>
+            <p><strong>E-mail: </strong>$email</p>
+            <p><strong>Телефон: </strong>$phone</p>
+            <p><i>$date</i></p>                                    
+        </body>
+    </html>";                                                                    // Альтернативное сообщние, если не сработало первое
 
     // Отправка
     $mail->send();

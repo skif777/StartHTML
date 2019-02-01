@@ -482,7 +482,7 @@ gulp.task('build-img', function() {
     var destToImg =  gulp.src([
         'app/img/*.png',
         'app/img/*.jpg',
-        'app/img/*.jpg',
+        'app/img/*.jpeg',
         'app/img/*.gif',
         ])
     // Выгрузка в папку dist/images/img
@@ -551,8 +551,8 @@ gulp.task('build-webp-webp', function() {
 // Выгрузка в папку dist/images/WebP
 gulp.task('build-webp', () =>
     gulp.src([
-        'img/*.jpg',
-        'img/*.png'
+        'app/img/*.jpg',
+        'app/img/*.png'
         ])
         .pipe(webp({
             // quality: 80,
@@ -590,4 +590,4 @@ gulp.task('build', gulp.series(
     ))
  
 // Команды по умолчанию
-gulp.task('default', gulp.series('jade', 'sass', 'scripts', 'browser-sync')); 
+gulp.task('default', gulp.parallel('watch', 'jade', 'sass', 'scripts', 'browser-sync')); 
