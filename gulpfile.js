@@ -37,12 +37,17 @@ var gulp                = require('gulp'), // GULP
 gulp.task('sass', function () {
     return gulp.src([
         'app/sass/style.sass',
-        //'app/blocks/page-contents/index/index.sass',
+        'app/blocks/page-contents/index/index.sass',
         ])
     .pipe(sass({outputStyle: 'expanded'}).on('error' , sass.logError)) // Компиляция в css
     .pipe(autoprefixer({ // автопрефиксер 
-            browsers: ['last 15 versions', 'ie >= 9', 'and_chr >= 2.3'],
-            cascade: true
+        "overrdebrowserslist": [
+            "last 1 version",
+            "> 1%",
+            "maintained node versions",
+            "not dead"
+          ],
+            cascade: true,
         }))
  // .pipe(browserSync.reload({stream: true})) // livereload pipe
     .pipe(gulp.dest('app/css'))
@@ -67,6 +72,7 @@ gulp.task('browser-sync' , function() {
         server: {
             baseDir: 'app'
         },
+        browser: 'Firefox',
         notify: false
     });
 });
@@ -79,9 +85,10 @@ gulp.task('uglify', function () {
 });
 
  // Конкатинация JS файлов
-gulp.task('scripts', function() {
+gulp.task('scripts-concat', function() {
     return gulp.src([
-    'app/libs/jquery3/jquery-3.2.1.min.js',
+    'app/libs/jQuery/jquery-3.4.1.min.js',
+    'app/libs/LazyLoad/dist/lazyload.min.js',
     'app/js/settings/settings.js'
     ])
     .pipe(concat('scripts.js')) // Название файла в который идет конкатинация
@@ -91,7 +98,7 @@ gulp.task('scripts', function() {
  // Конкатинация JS-min файлов
 gulp.task('scripts-min', function() {
     return gulp.src([
-    'app/scripts.js',
+    'app/js/scripts.js',
     ])
     .pipe(strip()) // Удаление комментариев
     .pipe(uglify()) // Сжатие js
@@ -99,7 +106,8 @@ gulp.task('scripts-min', function() {
             suffix: ".min",
         }))
     .pipe(gulp.dest('app/js'));
-}); 
+});
+gulp.task('scripts', gulp.series('scripts-concat', 'scripts-min'));
 
 // Оптимизация и минификая css
 gulp.task('css-min', function() {
@@ -213,7 +221,7 @@ gulp.task('webp', () =>
             // method: 6,
             lossless: true // Сжатие без потерь
         }))
-        .pipe(gulp.dest('dist/img'))
+        .pipe(gulp.dest('app/img'))
 );
 
 // Минификация SVG
@@ -399,8 +407,9 @@ gulp.task('build-settings', function() {
     // Файлы из папки settings
     var destToDist = gulp.src([
         'app/*.html',
-        '!app/settings/ht.access',
-        'app/settings/**',
+        'app/settings/configfile.xml',
+        'app/settings/manifest.json',
+        'app/settings/robots.txt',
         ])
     // Выгрузка в папку dist
     return merge(destToDist)
@@ -484,6 +493,7 @@ gulp.task('build-img', function() {
         'app/img/*.jpg',
         'app/img/*.jpeg',
         'app/img/*.gif',
+        'app/img/*.webp',
         ])
     // Выгрузка в папку dist/images/img
     return merge(destToImg)
@@ -537,32 +547,6 @@ gulp.task('build-jpegxr', function() {
 
 });
 
-// Выгрузка в папку dist/img/WebP
-gulp.task('build-webp-webp', function() {
-
-    // Файлы из папки images
-    var destToImgWebP =  gulp.src('app/img/WebP/**')
-    // Выгрузка в папку dist/img/WebP
-    return merge(destToImgWebP)
-        .pipe(gulp.dest('dist/img/WebP')); 
-
-});
-
-// Выгрузка в папку dist/images/WebP
-gulp.task('build-webp', () =>
-    gulp.src([
-        'app/img/*.jpg',
-        'app/img/*.png'
-        ])
-        .pipe(webp({
-            // quality: 80,
-            // preset: 'photo',
-            // method: 6,
-            lossless: true // Сжатие без потерь
-        }))
-        .pipe(gulp.dest('dist/img'))
-);
-
 // Сборка
 gulp.task('build', gulp.series(
     'clean',
@@ -584,10 +568,8 @@ gulp.task('build', gulp.series(
     'build-sprite',
     'build-jpeg2',
     'build-jpegxr',
-    'build-webp-webp',
     'build-sprite-svg',
-    'build-webp',
-    ))
+    ));
  
 // Команды по умолчанию
-gulp.task('default', gulp.parallel('watch', 'jade', 'sass', 'scripts', 'browser-sync')); 
+gulp.task('default', gulp.parallel('watch', 'jade', 'sass', 'scripts', 'webp', 'browser-sync')); 

@@ -1,6 +1,0 @@
-lib/
-test/
-normalize-scss.gemspec
-.travis.yml
-package-lock.json
-yarn.lock

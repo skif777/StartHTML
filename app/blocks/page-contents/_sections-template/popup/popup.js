@@ -1,6 +1,7 @@
 
 // Popup
 $(document).ready(function() {
+
   var container = $('body'),
       popup = $('.popup-bg, .popup'),
       bg = $('.popup-bg');
@@ -24,4 +25,5 @@ $(document).ready(function() {
       container.unbind('click');
     });
   });
+  
 });

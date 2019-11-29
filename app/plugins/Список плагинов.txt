@@ -54,7 +54,8 @@ https://github.com/mhuggins/jquery-countTo countTo (счетчик чисел)
 http://fittextjs.com/
 http://freqdec.github.io/slabText/
 
---LazyLoad (Ленивая загрузка для элментов с src)
+--LazyLoad (Ленивая загрузка для элементов с src)
+https://www.andreaverlicchi.eu/lazyload/
 https://github.com/eisbehr-/jquery.lazy
 https://github.com/vvo/lazyload
 https://github.com/ivopetkov/responsively-lazy
