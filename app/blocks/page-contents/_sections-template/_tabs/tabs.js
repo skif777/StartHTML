@@ -1,17 +1,34 @@
 
-// Tabs
-$(document).ready(function() {
-  $(".js-left-menu").on('click', 'li:not(.active)', function() {
-    $(this)
-    .addClass('li').siblings().removeClass('li') // Необязательно - добавляет к Li класс и удаляет у других Li
-    .closest('.content').find('.tabs-content2').removeClass('active') // Удалить если используется 1 tab
-    .closest('.content').find('.tabs-content').removeClass('active').eq($(this).index(0)).addClass('active');
-  });
-  // Tabs - 2 
-  $(".js-right-menu").on('click', 'li:not(.active)', function() {
-    $(this)
-    .addClass('li').siblings().removeClass('li') // Необязательно - добавляет к Li класс и удаляет у других Li
-    .closest('.content').find('.tabs-content').removeClass('active') // Удалить если используется 1 tab
-    .closest('.content').find('.tabs-content2').removeClass('active').eq($(this).index(0)).addClass('active');
-  });
-});
+function tabs(tabsWrapSel, tabSel, contentSel) {
+
+  const tabBtn = document.querySelectorAll(tabSel),
+        tabContent = document.querySelectorAll(contentSel),
+        tabs = document.querySelector(tabsWrapSel);
+
+  function tabClose() {
+    for (let content of tabContent) {
+      content.style.display = 'none';
+    }
+
+    tabBtn.forEach( (item) => {
+      item.classList.remove('tab-active')
+    })
+  }
+
+  function tabShow(i = 0) {
+    tabBtn[i].classList.add('tab-active');
+    tabContent[i].style.display = 'block';
+  }
+
+  tabs.addEventListener('click', (e) => {
+    for (let i = 0; i < tabBtn.length; i++) {
+      if (e.target == tabBtn[i]) {
+        tabClose()
+        tabShow(i)
+      }
+    }
+  })
+
+
+}
+tabs('.tabs', '.tab', '.tab-content')

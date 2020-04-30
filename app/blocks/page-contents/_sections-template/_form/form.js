@@ -1,49 +1,48 @@
 
 // ajax form
-$("#js-form").submit(function() {
-  var th = $(this);
-  $.ajax({
-    type: "POST",
-    url: "php/send.php",
-    data: th.serialize()
-  }).done(function() {
-    $(th).find(".form-success").addClass('active').css('display', 'flex').hide().fadeIn();
-    setTimeout(function() {
-      $(th).find(".form-success").removeClass('active').fadeOut();
-      th.trigger("reset");
-    }, 5000);
-  });
-  return false;
-});
+function formProcessing() {
 
-// Валидация формы
-$(document).ready(function() {
-  $("input[name='button']").click(function() {
-    var name = $('.name');
-    var pass = $('.pass');
+  const forms = document.querySelectorAll('form'),
+        input = document.querySelectorAll('form > label > input');
 
-    if (!name.val()) {
-      pass.css("border", "3px solid red");
-      name.css("border", "3px solid red");
-      $(".html").html('Введите имя');
-      return false;
-    } else if (!pass.val()) {
-      pass.css("border", "3px solid red");
-    }  else {
-      pass.css("border", "3px solid green");
-      name.css("border", "3px solid green");
-    } 
-    return true;
-  });
-  $("input[name='button2']").click(function() {
-    var email = $('.email');
-    if (!email.val()) {
-      email.css("border", "3px solid red");
-      $(".html").html('Введите имя');
-      return false;
-    } else {
-      email.css("border", "3px solid green");
-    } 
-    return true; 
-  });
-});
+  let message = {
+    loading: 'Загрузка....',
+    success: 'Спасибо! Форма отправленна!',
+    fail: 'Ошибка!'
+  }
+
+  const postData = function (url, data) {
+    document.querySelector('.status').textContent = message.loading;
+    let response = fetch(url, {
+      method: 'POST',
+      body: data
+    })
+    return response;
+  }
+
+  forms.forEach(function (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let statusMessage = document.createElement('div');
+      statusMessage.classList.add('status');
+      form.appendChild(statusMessage);
+
+      const formDate = new FormData(form);
+
+      postData('form.php', formDate)
+        .then(res => {
+          console.log(`Ответ с сервера ${res}`)
+        })
+        .catch((rej) => {
+          console.log(rej)
+        })
+        .finally(() => {
+          console.log('Завершенно')
+        })
+    })
+  })
+
+
+}
+formProcessing()
